@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,100..900;1,75..125,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 210 33% 98%;
+    --foreground: 211 55% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 211 55% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 211 55% 20%;
+    --primary: 211 55% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 207 36% 94%;
+    --secondary-foreground: 211 55% 20%;
+    --muted: 207 36% 94%;
+    --muted-foreground: 207 23% 39%;
+    --accent: 40 55% 51%;
+    --accent-foreground: 211 55% 20%;
+    --destructive: 5 65% 47%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 208 28% 88%;
+    --input: 208 28% 80%;
+    --ring: 40 55% 51%;
+    --radius: 1rem;
+    --sidebar-background: 210 33% 98%;
+    --sidebar-foreground: 211 55% 20%;
+    --sidebar-primary: 211 55% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207 36% 94%;
+    --sidebar-accent-foreground: 211 55% 20%;
+    --sidebar-border: 208 28% 88%;
+    --sidebar-ring: 40 55% 51%;
+    --chart-1: 211 55% 20%;
+    --chart-2: 40 55% 51%;
+    --chart-3: 155 46% 34%;
+    --chart-4: 206 55% 43%;
+    --chart-5: 18 67% 52%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-width: 320px;
+    font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: #e5b95c;
+    color: #10283f;
+  }
+
+  section[aria-label='Notifications alt+T'] {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@layer components {
+  .nav-underline {
+    position: relative;
+  }
+
+  .nav-underline::after {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.4rem;
+    left: 0.5rem;
+    height: 2px;
+    content: '';
+    background: #c99a3c;
+    border-radius: 999px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease-out;
+  }
+
+  .nav-underline:hover::after,
+  .nav-underline:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .elo-arc {
+    position: absolute;
+    top: -8.5rem;
+    right: -8rem;
+    width: 27rem;
+    height: 27rem;
+    pointer-events: none;
+    border: 2.15rem solid #17324f;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    transform: rotate(36deg);
+  }
+
+  .elo-arc::before,
+  .elo-arc::after {
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+  }
+
+  .elo-arc::before {
+    inset: -3.25rem;
+    border: 0.34rem solid #c99a3c;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .elo-arc::after {
+    inset: 1.35rem;
+    border: 0.12rem solid #c99a3c;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .elo-arc--auth {
+    top: -13rem;
+    right: -13rem;
+    opacity: 0.9;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 18px 36px rgba(201, 154, 60, 0.18);
+  }
+}
+
+@keyframes hero-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes confirm-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes new-once {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cascade {
+    opacity: 0;
+    animation: hero-up 450ms ease-out forwards;
+  }
+
+  .hero-delay-1 {
+    animation-delay: 40ms;
+  }
+  .hero-delay-2 {
+    animation-delay: 110ms;
+  }
+  .hero-delay-3 {
+    animation-delay: 180ms;
+  }
+  .hero-delay-4 {
+    animation-delay: 250ms;
+  }
+
+  .confirm-card {
+    animation: confirm-scale 250ms ease-out;
+  }
+
+  .status-new-once {
+    animation: new-once 700ms ease-out 1;
+  }
+
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .elo-arc {
+    top: -7rem;
+    right: -10rem;
+    width: 20rem;
+    height: 20rem;
+    border-width: 1.6rem;
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-spin {
+    animation-duration: 1.5s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
