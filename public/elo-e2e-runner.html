@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Executor E2E ELO</title>
+  </head>
+  <body>
+    <main>
+      <h1>Executor E2E ELO</h1>
+      <p id="status">Executando…</p>
+      <pre id="result"></pre>
+    </main>
+    <script>
+      const endpoint =
+        'https://canal-de-comunicacao-elo-70de6.shrd01.internal.goskip.dev/backend/v1/elo-test/contacts-e2e'
+      const status = document.querySelector('#status')
+      const result = document.querySelector('#result')
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'X-ELO-Test-Secret': 'elo-e2e-run-20261125-7mQ4x9' },
+      })
+        .then(async (response) => {
+          const body = await response.json()
+          status.textContent = response.ok ? 'Fluxo validado.' : `Falha HTTP ${response.status}.`
+          result.textContent = JSON.stringify(body, null, 2)
+        })
+        .catch((error) => {
+          status.textContent = 'Falha de rede.'
+          result.textContent = String(error)
+        })
+    </script>
+  </body>
+</html>
