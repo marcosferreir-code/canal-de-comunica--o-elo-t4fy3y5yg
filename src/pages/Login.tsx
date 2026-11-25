@@ -57,7 +57,7 @@ export default function Login() {
     <AuthShell
       eyebrow="Área da equipe ELO"
       title="Acesse o painel"
-      description="Entre para acompanhar e responder os contatos recebidos."
+      description="Entre para acompanhar e responder as manifestações de interesse."
     >
       <Form {...form}>
         <form

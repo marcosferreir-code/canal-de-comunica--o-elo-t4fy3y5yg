@@ -1,31 +1,40 @@
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import type { ContactStatus } from '@/types/contact'
 
-export const statusLabels: Record<ContactStatus, string> = {
+const statusLabels: Record<ContactStatus, string> = {
   novo: 'Novo',
   em_atendimento: 'Em atendimento',
   concluido: 'Concluído',
 }
 
-const statusStyles: Record<ContactStatus, string> = {
-  novo: 'border-[#E6C477] bg-[#FFF4D8] text-[#6F4C08]',
-  em_atendimento: 'border-[#AFC9E1] bg-[#E8F2FB] text-[#1E527C]',
-  concluido: 'border-[#A8D3BF] bg-[#E8F6EF] text-[#236247]',
+const statusClasses: Record<ContactStatus, string> = {
+  novo: 'border-[#E3C878] bg-[#FFF4D8] text-[#6F4C08]',
+  em_atendimento: 'border-[#B4D3EA] bg-[#E8F2FB] text-[#1E527C]',
+  concluido: 'border-[#B4DCc8] bg-[#E8F6EF] text-[#236247]',
 }
 
-export function StatusBadge({ status }: { status: ContactStatus }) {
+const statusRoles: Record<ContactStatus, string> = {
+  novo: 'Pré-cadastro novo, aguardando triagem',
+  em_atendimento: 'Pré-cadastro em atendimento pela Comissão de Fundação',
+  concluido: 'Pré-cadastro concluído',
+}
+
+interface StatusBadgeProps {
+  status: ContactStatus
+}
+
+export function StatusBadge({ status }: StatusBadgeProps) {
   return (
-    <Badge
-      variant="outline"
+    <span
       className={cn(
-        'min-h-7 rounded-full px-3 py-1 text-xs font-bold tracking-wide',
-        statusStyles[status],
-        status === 'novo' && 'status-new-once',
+        'inline-flex items-center rounded-full border px-3 py-1 text-xs font-extrabold uppercase tracking-wide',
+        statusClasses[status],
       )}
     >
-      <span className="mr-1.5 size-1.5 rounded-full bg-current" aria-hidden="true" />
-      {statusLabels[status]}
-    </Badge>
+      <span role="status">{statusLabels[status]}</span>
+      <span className="sr-only">{statusRoles[status]}</span>
+    </span>
   )
 }
+
+export { statusLabels }

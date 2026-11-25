@@ -16,8 +16,8 @@ import {
 
 const anchorLinks = [
   { label: 'Início', hash: 'inicio' },
-  { label: 'Serviços', hash: 'servicos' },
-  { label: 'Contato', hash: 'contato' },
+  { label: 'Jornada', hash: 'jornada' },
+  { label: 'Pré-cadastro', hash: 'pre-cadastro' },
 ]
 
 export default function Layout() {
@@ -92,10 +92,10 @@ export default function Layout() {
             {headerLinks}
             <Button
               type="button"
-              onClick={() => goToSection('contato')}
+              onClick={() => goToSection('pre-cadastro')}
               className="ml-2 min-h-11 rounded-full bg-[#17324F] px-6 font-bold text-white hover:bg-[#1E4266]"
             >
-              Fale conosco
+              Quero participar
             </Button>
           </nav>
           <Sheet>
@@ -113,7 +113,7 @@ export default function Layout() {
             <SheetContent className="border-l-[#DCE6EE] bg-white">
               <SheetHeader className="text-left">
                 <SheetTitle className="text-[#17324F]">Navegação ELO</SheetTitle>
-                <SheetDescription>Encontre informações e fale com a equipe.</SheetDescription>
+                <SheetDescription>Conheça a jornada e manifeste seu interesse.</SheetDescription>
               </SheetHeader>
               <nav aria-label="Menu móvel" className="mt-8 flex flex-col items-stretch gap-2">
                 {anchorLinks.map((item) => (
@@ -139,10 +139,10 @@ export default function Layout() {
                 <SheetClose asChild>
                   <Button
                     type="button"
-                    onClick={() => goToSection('contato')}
+                    onClick={() => goToSection('pre-cadastro')}
                     className="mt-3 min-h-12 rounded-full bg-[#17324F] font-bold text-white hover:bg-[#1E4266]"
                   >
-                    Fale conosco
+                    Quero participar
                   </Button>
                 </SheetClose>
               </nav>
@@ -164,9 +164,10 @@ export default function Layout() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
           <div>
             <BrandMark inverted />
-            <p className="mt-7 font-bold">ELO — Canal de Comunicação Institucional</p>
+            <p className="mt-7 font-bold">ELO — União do Legislativo Municipal Catarinense</p>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#D7E2EB]">
-              Avisos, convocações, inscrições e sugestões em um só lugar.
+              Comissão de Fundação — canal de aproximação com os servidores dos Legislativos
+              Municipais de Santa Catarina.
             </p>
           </div>
           <p className="border-t border-white/15 pt-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#E5B95C] md:border-l md:border-t-0 md:pl-8 md:pt-0">

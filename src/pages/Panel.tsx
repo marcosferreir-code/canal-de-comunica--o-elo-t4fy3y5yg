@@ -77,7 +77,7 @@ function formatDate(value: string) {
 }
 
 export default function Panel() {
-  usePageTitle('Painel de contatos')
+  usePageTitle('Painel de manifestações de interesse')
   const navigate = useNavigate()
   const user = getCurrentUser()
   const [contacts, setContacts] = useState<ContactRecord[]>([])
@@ -175,9 +175,11 @@ export default function Panel() {
               Equipe ELO
             </p>
             <h1 className="mt-3 text-4xl font-extrabold uppercase tracking-[-0.04em] text-[#17324F] sm:text-5xl">
-              Painel de Contatos
+              Painel de Manifestações
             </h1>
-            <p className="mt-3 text-[#5B7186]">Acompanhe cada conversa, da chegada à conclusão.</p>
+            <p className="mt-3 text-[#5B7186]">
+              Acompanhe cada manifestação de interesse, da chegada à participação institucional.
+            </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Link
@@ -236,9 +238,12 @@ export default function Panel() {
         <div className="mt-8 rounded-[1.75rem] border border-[#DCE6EE] bg-white p-4 shadow-sm sm:p-6">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
             <div>
-              <h2 className="text-xl font-extrabold text-[#17324F]">Contatos recebidos</h2>
+              <h2 className="text-xl font-extrabold text-[#17324F]">
+                Manifestações de interesse recebidas
+              </h2>
               <p role="status" className="mt-1 text-sm text-[#5B7186]">
-                {filtered.length} {filtered.length === 1 ? 'contato exibido' : 'contatos exibidos'}
+                {filtered.length}{' '}
+                {filtered.length === 1 ? 'manifestação exibida' : 'manifestações exibidas'}
               </p>
             </div>
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
@@ -287,7 +292,7 @@ export default function Panel() {
 
         <div className="mt-5">
           {loading ? (
-            <div className="space-y-4" aria-label="Carregando contatos">
+            <div className="space-y-4" aria-label="Carregando manifestações de interesse">
               {[0, 1, 2].map((item) => (
                 <Skeleton key={item} className="min-h-52 w-full rounded-[1.75rem]" />
               ))}
@@ -297,14 +302,14 @@ export default function Panel() {
               role="alert"
               className="rounded-[1.75rem] border border-[#E8C2BE] bg-[#FCECEA] p-10 text-center text-[#8C2C23]"
             >
-              <p className="font-bold">Não foi possível carregar os contatos.</p>
+              <p className="font-bold">Não foi possível carregar as manifestações.</p>
               <p className="mt-2 text-sm">Atualize a página ou entre novamente.</p>
             </div>
           ) : filtered.length === 0 ? (
             <div className="rounded-[1.75rem] border border-dashed border-[#B8C8D5] bg-[#EAF1F7]/70 p-12 text-center">
               <UsersRound className="mx-auto size-10 text-[#5B7186]" aria-hidden="true" />
               <h3 className="mt-4 text-xl font-extrabold text-[#17324F]">
-                Nenhum contato por aqui ainda.
+                Nenhuma manifestação por aqui ainda.
               </h3>
               <p className="mt-2 text-[#5B7186]">Altere os filtros ou aguarde um novo envio.</p>
             </div>
@@ -331,6 +336,7 @@ export default function Panel() {
                         <time dateTime={record.created}>{formatDate(record.created)}</time>
                       </div>
                       <p className="mt-5 whitespace-pre-wrap break-words border-l-2 border-[#C99A3C] pl-4 leading-relaxed text-[#334F67]">
+                        <span className="sr-only">Manifestação: </span>
                         {record.need}
                       </p>
                     </div>

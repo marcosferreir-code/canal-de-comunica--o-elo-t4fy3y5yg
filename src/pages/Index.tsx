@@ -1,20 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  ArrowRight,
-  BellRing,
-  CalendarCheck2,
-  Check,
-  FileCheck2,
-  Lightbulb,
-  Loader2,
-  MessageCircleMore,
-  Send,
-} from 'lucide-react'
+import { ArrowRight, Check, HeartHandshake, Loader2, Send } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { Journey } from '@/components/Journey'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -45,39 +36,12 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>
 
-const services = [
-  {
-    title: 'Avisos oficiais',
-    description: 'Comunicados e avisos da Fundação, direto da fonte.',
-    icon: BellRing,
-    number: '01',
-  },
-  {
-    title: 'Convocações',
-    description: 'Convocações e prazos importantes, sem se perder.',
-    icon: CalendarCheck2,
-    number: '02',
-  },
-  {
-    title: 'Inscrições',
-    description: 'Faça sua inscrição em eventos e processos da ELO.',
-    icon: FileCheck2,
-    number: '03',
-  },
-  {
-    title: 'Sugestões',
-    description: 'Envie ideias e sugestões para melhorar o canal.',
-    icon: Lightbulb,
-    number: '04',
-  },
-]
-
-function scrollToContact() {
-  document.getElementById('contato')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+function scrollToPrecadastro() {
+  document.getElementById('pre-cadastro')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
 }
 
 export default function Index() {
-  usePageTitle('Canal de Comunicação Institucional')
+  usePageTitle('Canal de Comunicação ELO')
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const form = useForm<ContactFormValues>({
@@ -98,7 +62,7 @@ export default function Index() {
       await createContact(values)
       form.reset()
       setSubmitted(true)
-      toast.success('Contato recebido pela ELO.')
+      toast.success('Pré-cadastro recebido pela Comissão de Fundação da ELO.')
       resetTimer.current = setTimeout(() => setSubmitted(false), 5000)
     } catch (error) {
       const fieldErrors = extractFieldErrors(error)
@@ -125,122 +89,73 @@ export default function Index() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
           <div className="relative z-10 max-w-5xl">
             <p className="hero-cascade hero-delay-1 text-xs font-extrabold uppercase tracking-[0.24em] text-[#8A651C] sm:text-sm">
-              Canal de comunicação ELO
+              Comissão de Fundação — União do Legislativo Municipal Catarinense ELO
             </p>
             <h1 className="hero-cascade hero-delay-2 mt-6 max-w-5xl text-5xl font-extrabold uppercase leading-[0.96] tracking-[-0.055em] text-[#17324F] sm:text-6xl lg:text-[5.35rem]">
-              Um canal claro para a ELO se comunicar
+              Queremos falar com você!
             </h1>
             <p className="hero-cascade hero-delay-3 mt-8 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
-              Avisos, convocações, inscrições e sugestões — tudo em um só lugar, direto da Fundação.
+              Somos a Comissão de Fundação da União do Legislativo Municipal Catarinense{' '}
+              <strong className="font-bold text-[#17324F]">_ELO</strong>.
+            </p>
+            <p className="hero-cascade hero-delay-3 mt-5 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
+              A ELO é uma iniciativa de integração e valorização dos agentes públicos dos
+              Legislativos Municipais de Santa Catarina.
             </p>
             <div className="hero-cascade hero-delay-4 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button
                 type="button"
-                onClick={scrollToContact}
+                onClick={scrollToPrecadastro}
                 className="min-h-14 rounded-full bg-[#17324F] px-8 text-base font-bold text-white shadow-[0_10px_24px_rgba(23,50,79,0.18)] hover:bg-[#1E4266]"
               >
-                Enviar meu contato
+                Quero participar da fundação
                 <ArrowRight aria-hidden="true" className="ml-2 size-5" />
               </Button>
               <span className="text-sm font-semibold text-[#5B7186]">
-                Um ponto de entrada simples, oficial e direto.
+                Pré-cadastro voluntário e simplificado — leva menos de um minuto.
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="destaque-title">
-        <div className="reveal mx-auto max-w-7xl overflow-hidden rounded-[2rem] border-l-[0.45rem] border-[#C99A3C] bg-[#10283F] shadow-[0_18px_45px_rgba(16,40,63,0.18)]">
-          <div className="grid gap-8 px-6 py-10 sm:px-10 lg:grid-cols-[11rem_1px_1fr] lg:items-center lg:gap-10 lg:px-14 lg:py-12">
-            <div className="flex items-center justify-center">
-              <span className="flex size-24 items-center justify-center rounded-full border border-[#E5B95C]/50 bg-white/5 text-[#E5B95C]">
-                <MessageCircleMore className="size-12" strokeWidth={1.7} aria-hidden="true" />
-              </span>
-            </div>
-            <div className="hidden h-32 bg-[#C99A3C] lg:block" aria-hidden="true" />
-            <div>
-              <h2
-                id="destaque-title"
-                className="text-3xl font-extrabold leading-tight tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl"
-              >
-                Falar com a ELO exige
-                <span className="block text-[#E5B95C]">um canal oficial.</span>
-              </h2>
-              <p className="mt-5 max-w-3xl leading-relaxed text-[#E7EEF4]">
-                Aqui você recebe avisos oficiais, convocações, faz sua inscrição e envia sugestões —
-                com transparência e resposta acompanhada.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Journey />
 
       <section
-        id="servicos"
-        className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8"
-        aria-labelledby="services-title"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="reveal max-w-3xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#8A651C]">
-              Serviços em destaque
-            </p>
-            <h2
-              id="services-title"
-              className="mt-4 text-4xl font-extrabold uppercase tracking-[-0.04em] text-[#17324F] sm:text-5xl"
-            >
-              Informação e escuta em um só lugar
-            </h2>
-          </div>
-          <ul role="list" className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {services.map((service) => {
-              const Icon = service.icon
-              return (
-                <li key={service.title} className="reveal">
-                  <article className="service-card group relative min-h-full overflow-hidden rounded-[1.75rem] border border-[#DCE6EE] bg-[#EAF1F7] p-6 transition-[transform,box-shadow] duration-200 motion-safe:hover:-translate-y-1">
-                    <span className="absolute right-5 top-5 text-xs font-extrabold tracking-[0.18em] text-[#8A651C]">
-                      {service.number}
-                    </span>
-                    <span className="flex size-14 items-center justify-center rounded-full bg-[#17324F] text-[#E5B95C] shadow-sm">
-                      <Icon className="size-7" aria-hidden="true" />
-                    </span>
-                    <h3 className="mt-7 text-lg font-extrabold uppercase leading-tight text-[#17324F]">
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 leading-relaxed text-[#506B82]">{service.description}</p>
-                  </article>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      </section>
-
-      <section
-        id="contato"
+        id="pre-cadastro"
         className="scroll-mt-24 px-4 pb-20 sm:px-6 lg:px-8"
-        aria-labelledby="contact-title"
+        aria-labelledby="pre-cadastro-title"
       >
         <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div className="reveal pt-4">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#8A651C]">
-              Seu contato é o primeiro passo
+              Etapa 5 da jornada
             </p>
             <h2
-              id="contact-title"
+              id="pre-cadastro-title"
               className="mt-4 text-4xl font-extrabold uppercase leading-tight tracking-[-0.04em] text-[#17324F] sm:text-5xl"
             >
-              Fale com a ELO
+              Pré-cadastro — Manifestação de interesse
             </h2>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-[#5B7186]">
-              Conte o que você precisa — a equipe responde por aqui.
+              Uma manifestação voluntária e simplificada para participar da fundação da ELO.
             </p>
             <div className="mt-9 rounded-2xl border-l-4 border-[#C99A3C] bg-[#EAF1F7] p-6">
-              <p className="font-bold text-[#17324F]">Portal como referência central.</p>
+              <p className="font-bold text-[#17324F]">Voluntário e simplificado.</p>
               <p className="mt-2 text-sm leading-relaxed text-[#506B82]">
-                Um caminho simples para conhecer a ELO, manifestar interesse e iniciar um
-                relacionamento institucional.
+                Você pode chegar até aqui por indicação de colega ou QR Code — e a Comissão de
+                Fundação acompanha cada manifestação pelo painel interno, do primeiro contato à
+                participação institucional.
+              </p>
+            </div>
+            <div className="mt-6 flex items-start gap-4 rounded-2xl bg-[#10283F] p-6">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full border border-[#E5B95C]/50 text-[#E5B95C]">
+                <HeartHandshake className="size-6" strokeWidth={1.7} aria-hidden="true" />
+              </span>
+              <p className="text-sm leading-relaxed text-[#E7EEF4]">
+                Ainda decidindo? Antes de manifestar interesse, você pode seguir o Canal Oficial
+                (etapa 2) e conhecer a ELO pelo portal (etapa 3) — nenhum cadastro é exigido para
+                isso.
               </p>
             </div>
           </div>
@@ -255,9 +170,11 @@ export default function Index() {
                   <Check className="size-10" strokeWidth={2.5} aria-hidden="true" />
                 </span>
                 <h3 className="mt-7 text-3xl font-extrabold uppercase tracking-[-0.035em] text-[#17324F]">
-                  Recebido!
+                  Pré-cadastro recebido!
                 </h3>
-                <p className="mt-3 text-lg text-[#5B7186]">Em breve entraremos em contato.</p>
+                <p className="mt-3 text-lg text-[#5B7186]">
+                  A Comissão de Fundação vai entrar em contato.
+                </p>
               </div>
             ) : (
               <Form {...form}>
@@ -316,14 +233,14 @@ export default function Index() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="font-bold text-[#17324F]">
-                          O que você precisa?
+                          Sua manifestação de interesse
                         </FormLabel>
                         <FormControl>
                           <Textarea
                             required
                             autoComplete="off"
                             enterKeyHint="send"
-                            placeholder="Conte sua dúvida, interesse ou sugestão."
+                            placeholder="Conte como gostaria de participar da fundação da ELO."
                             className="min-h-32 resize-y rounded-xl border-[#C9D5DF] bg-[#F9FBFC] focus-visible:ring-[#C99A3C]"
                             {...field}
                           />
@@ -340,12 +257,12 @@ export default function Index() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 size-5 animate-spin" aria-hidden="true" />
-                        Enviando contato…
+                        Enviando pré-cadastro…
                       </>
                     ) : (
                       <>
                         <Send className="mr-2 size-5" aria-hidden="true" />
-                        Enviar contato
+                        Enviar pré-cadastro
                       </>
                     )}
                   </Button>
@@ -359,7 +276,8 @@ export default function Index() {
       <aside className="px-4 pb-20 sm:px-6 lg:px-8" aria-label="Nota institucional">
         <div className="mx-auto max-w-7xl rounded-2xl border-l-4 border-[#C99A3C] bg-[#EAF1F7] px-6 py-5 text-sm leading-relaxed text-[#425F77] sm:px-8">
           <strong className="text-[#17324F]">Canal de demonstração:</strong> os dados enviados nesta
-          versão são de exemplo e ficam registrados no painel interno da ELO.
+          versão são de exemplo e ficam registrados no painel interno da Comissão de Fundação da
+          ELO.
         </div>
       </aside>
     </>
