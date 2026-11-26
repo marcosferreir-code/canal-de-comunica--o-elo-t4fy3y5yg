@@ -16,7 +16,7 @@ import {
 
 const anchorLinks = [
   { label: 'Início', hash: 'inicio' },
-  { label: 'Jornada', hash: 'jornada' },
+  { label: 'Quem somos', hash: 'jornada' },
   { label: 'Pré-cadastro', hash: 'pre-cadastro' },
 ]
 
@@ -113,7 +113,7 @@ export default function Layout() {
             <SheetContent className="border-l-[#DCE6EE] bg-white">
               <SheetHeader className="text-left">
                 <SheetTitle className="text-[#17324F]">Navegação ELO</SheetTitle>
-                <SheetDescription>Conheça a jornada e manifeste seu interesse.</SheetDescription>
+                <SheetDescription>Conheça quem somos e manifeste seu interesse.</SheetDescription>
               </SheetHeader>
               <nav aria-label="Menu móvel" className="mt-8 flex flex-col items-stretch gap-2">
                 {anchorLinks.map((item) => (

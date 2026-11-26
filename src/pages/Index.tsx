@@ -138,12 +138,9 @@ export default function Index() {
       >
         <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div className="reveal pt-4">
-            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#8A651C]">
-              Etapa 5 da jornada
-            </p>
             <h2
               id="pre-cadastro-title"
-              className="mt-4 text-4xl font-extrabold uppercase leading-tight tracking-[-0.04em] text-[#17324F] sm:text-5xl"
+              className="text-4xl font-extrabold uppercase leading-tight tracking-[-0.04em] text-[#17324F] sm:text-5xl"
             >
               Pré-cadastro — Manifestação de interesse
             </h2>
