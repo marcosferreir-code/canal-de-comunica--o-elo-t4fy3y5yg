@@ -144,9 +144,6 @@ export default function Index() {
             >
               Pré-cadastro — Manifestação de interesse
             </h2>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed text-[#5B7186]">
-              {MANIFESTATION_TEXT}
-            </p>
           </div>
 
           <div className="reveal min-h-[34rem] rounded-[2rem] border border-[#DCE6EE] border-l-[0.45rem] border-l-[#C99A3C] bg-white p-6 shadow-[0_18px_55px_rgba(23,50,79,0.10)] sm:p-9">
@@ -174,6 +171,7 @@ export default function Index() {
                   }
                   className="space-y-6"
                 >
+                  <p className="text-lg leading-relaxed text-[#5B7186]">{MANIFESTATION_TEXT}</p>
                   <p className="text-sm text-[#5B7186]">Todos os campos são obrigatórios.</p>
                   <FormField
                     control={form.control}

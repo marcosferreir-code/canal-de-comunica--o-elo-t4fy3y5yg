@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Globe, HeartHandshake, Target, Users, Waypoints, type LucideIcon } from 'lucide-react'
+import { Globe, Target, Users, Waypoints, type LucideIcon } from 'lucide-react'
 
 import { BulletList } from '@/components/BulletList'
 
@@ -101,12 +101,6 @@ export const journeySteps: JourneyStep[] = [
     content: (
       <p className={bodyClass}>Conheça como estamos nos organizando — visite nosso portal.</p>
     ),
-  },
-  {
-    id: 'manifestacao',
-    title: 'Manifestação de interesse',
-    icon: HeartHandshake,
-    content: <p className={bodyClass}>{MANIFESTATION_TEXT}</p>,
   },
 ]
 

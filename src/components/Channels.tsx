@@ -11,17 +11,8 @@ const telegramMaterials = [
   'Conteúdos organizados por temas de interesse.',
 ]
 
+// WhatsApp e Telegram já são descritos nos cards acima: aqui fica só o que não se repete.
 const tools: Array<{ icon: LucideIcon; label: string; text: string }> = [
-  {
-    icon: Megaphone,
-    label: 'WhatsApp:',
-    text: 'nosso mural de avisos e comunicação institucional.',
-  },
-  {
-    icon: MessagesSquare,
-    label: 'Telegram:',
-    text: 'nosso espaço de interação, colaboração, debates e deliberações.',
-  },
   {
     icon: Globe,
     label: 'Portal ELO:',
