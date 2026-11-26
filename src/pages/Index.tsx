@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowRight, Check, HeartHandshake, Loader2, Send } from 'lucide-react'
+import { ArrowRight, Check, Loader2, Send } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { EloSymbol } from '@/components/EloSymbol'
-import { Journey } from '@/components/Journey'
+import { Channels } from '@/components/Channels'
+import { Journey, MANIFESTATION_TEXT } from '@/components/Journey'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -90,18 +91,18 @@ export default function Index() {
           <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[1fr_22rem] lg:gap-16">
             <div className="max-w-5xl">
               <p className="hero-cascade hero-delay-1 text-xs font-extrabold uppercase tracking-[0.24em] text-[#8A651C] sm:text-sm">
-                Comissão de Fundação — União do Legislativo Municipal Catarinense ELO
+                CANAL DE COMUNICAÇÃO ELO
               </p>
               <h1 className="hero-cascade hero-delay-2 mt-6 max-w-5xl text-5xl font-extrabold uppercase leading-[0.96] tracking-[-0.055em] text-[#17324F] sm:text-6xl lg:text-[5.35rem]">
                 Queremos falar com você!
               </h1>
               <p className="hero-cascade hero-delay-3 mt-8 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
-                Somos a Comissão de Fundação da União do Legislativo Municipal Catarinense{' '}
-                <strong className="font-bold text-[#17324F]">_ELO</strong>.
+                Somos a Comissão de Fundação da Associação denominada União do Legislativo Municipal
+                Catarinense — <strong className="font-bold text-[#17324F]">ELO</strong>.
               </p>
               <p className="hero-cascade hero-delay-3 mt-5 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
-                A ELO é uma iniciativa de integração e valorização dos agentes públicos dos
-                Legislativos Municipais de Santa Catarina.
+                É um espaço de cooperação, compartilhamento de conhecimentos, troca de experiências
+                e construção de soluções coletivas para os desafios do Legislativo Municipal.
               </p>
               <div className="hero-cascade hero-delay-4 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <Button
@@ -109,7 +110,7 @@ export default function Index() {
                   onClick={scrollToPrecadastro}
                   className="min-h-14 rounded-full bg-[#17324F] px-8 text-base font-bold text-white shadow-[0_10px_24px_rgba(23,50,79,0.18)] hover:bg-[#1E4266]"
                 >
-                  Quero participar da fundação
+                  Quero Participar
                   <ArrowRight aria-hidden="true" className="ml-2 size-5" />
                 </Button>
                 <span className="text-sm font-semibold text-[#5B7186]">
@@ -147,26 +148,8 @@ export default function Index() {
               Pré-cadastro — Manifestação de interesse
             </h2>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-[#5B7186]">
-              Uma manifestação voluntária e simplificada para participar da fundação da ELO.
+              {MANIFESTATION_TEXT}
             </p>
-            <div className="mt-9 rounded-2xl border-l-4 border-[#C99A3C] bg-[#EAF1F7] p-6">
-              <p className="font-bold text-[#17324F]">Voluntário e simplificado.</p>
-              <p className="mt-2 text-sm leading-relaxed text-[#506B82]">
-                Você pode chegar até aqui por indicação de colega ou QR Code — e a Comissão de
-                Fundação acompanha cada manifestação pelo painel interno, do primeiro contato à
-                participação institucional.
-              </p>
-            </div>
-            <div className="mt-6 flex items-start gap-4 rounded-2xl bg-[#10283F] p-6">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-full border border-[#E5B95C]/50 text-[#E5B95C]">
-                <HeartHandshake className="size-6" strokeWidth={1.7} aria-hidden="true" />
-              </span>
-              <p className="text-sm leading-relaxed text-[#E7EEF4]">
-                Ainda decidindo? Antes de manifestar interesse, você pode seguir o Canal Oficial
-                (etapa 2) e conhecer a ELO pelo portal (etapa 3) — nenhum cadastro é exigido para
-                isso.
-              </p>
-            </div>
           </div>
 
           <div className="reveal min-h-[34rem] rounded-[2rem] border border-[#DCE6EE] border-l-[0.45rem] border-l-[#C99A3C] bg-white p-6 shadow-[0_18px_55px_rgba(23,50,79,0.10)] sm:p-9">
@@ -281,6 +264,8 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      <Channels />
 
       <aside className="px-4 pb-20 sm:px-6 lg:px-8" aria-label="Nota institucional">
         <div className="mx-auto max-w-7xl rounded-2xl border-l-4 border-[#C99A3C] bg-[#EAF1F7] px-6 py-5 text-sm leading-relaxed text-[#425F77] sm:px-8">

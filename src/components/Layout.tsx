@@ -164,11 +164,20 @@ export default function Layout() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
           <div>
             <BrandMark inverted />
-            <p className="mt-7 font-bold">ELO — União do Legislativo Municipal Catarinense</p>
+            <p className="mt-7 font-bold">ELO — União do Legislativo Catarinense</p>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#D7E2EB]">
               Comissão de Fundação — canal de aproximação com os servidores dos Legislativos
               Municipais de Santa Catarina.
             </p>
+            <a
+              href="https://www.elosc.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block rounded-sm text-sm font-semibold text-[#E5B95C] underline underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#10283F]"
+            >
+              www.elosc.org
+              <span className="sr-only"> (abre em nova aba)</span>
+            </a>
           </div>
           <p className="border-t border-white/15 pt-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#E5B95C] md:border-l md:border-t-0 md:pl-8 md:pt-0">
             Demonstração — dados de exemplo
