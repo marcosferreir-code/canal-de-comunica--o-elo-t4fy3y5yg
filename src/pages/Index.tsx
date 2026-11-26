@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { EloSymbol } from '@/components/EloSymbol'
 import { Journey } from '@/components/Journey'
 import { Button } from '@/components/ui/button'
 import {
@@ -85,35 +86,43 @@ export default function Index() {
   return (
     <>
       <section id="inicio" className="relative scroll-mt-24 overflow-hidden bg-white">
-        <div className="elo-arc" aria-hidden="true" />
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
-          <div className="relative z-10 max-w-5xl">
-            <p className="hero-cascade hero-delay-1 text-xs font-extrabold uppercase tracking-[0.24em] text-[#8A651C] sm:text-sm">
-              Comissão de Fundação — União do Legislativo Municipal Catarinense ELO
-            </p>
-            <h1 className="hero-cascade hero-delay-2 mt-6 max-w-5xl text-5xl font-extrabold uppercase leading-[0.96] tracking-[-0.055em] text-[#17324F] sm:text-6xl lg:text-[5.35rem]">
-              Queremos falar com você!
-            </h1>
-            <p className="hero-cascade hero-delay-3 mt-8 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
-              Somos a Comissão de Fundação da União do Legislativo Municipal Catarinense{' '}
-              <strong className="font-bold text-[#17324F]">_ELO</strong>.
-            </p>
-            <p className="hero-cascade hero-delay-3 mt-5 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
-              A ELO é uma iniciativa de integração e valorização dos agentes públicos dos
-              Legislativos Municipais de Santa Catarina.
-            </p>
-            <div className="hero-cascade hero-delay-4 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button
-                type="button"
-                onClick={scrollToPrecadastro}
-                className="min-h-14 rounded-full bg-[#17324F] px-8 text-base font-bold text-white shadow-[0_10px_24px_rgba(23,50,79,0.18)] hover:bg-[#1E4266]"
-              >
-                Quero participar da fundação
-                <ArrowRight aria-hidden="true" className="ml-2 size-5" />
-              </Button>
-              <span className="text-sm font-semibold text-[#5B7186]">
-                Pré-cadastro voluntário e simplificado — leva menos de um minuto.
-              </span>
+          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[1fr_22rem] lg:gap-16">
+            <div className="max-w-5xl">
+              <p className="hero-cascade hero-delay-1 text-xs font-extrabold uppercase tracking-[0.24em] text-[#8A651C] sm:text-sm">
+                Comissão de Fundação — União do Legislativo Municipal Catarinense ELO
+              </p>
+              <h1 className="hero-cascade hero-delay-2 mt-6 max-w-5xl text-5xl font-extrabold uppercase leading-[0.96] tracking-[-0.055em] text-[#17324F] sm:text-6xl lg:text-[5.35rem]">
+                Queremos falar com você!
+              </h1>
+              <p className="hero-cascade hero-delay-3 mt-8 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
+                Somos a Comissão de Fundação da União do Legislativo Municipal Catarinense{' '}
+                <strong className="font-bold text-[#17324F]">_ELO</strong>.
+              </p>
+              <p className="hero-cascade hero-delay-3 mt-5 max-w-3xl text-lg font-medium leading-relaxed text-[#5B7186] sm:text-xl">
+                A ELO é uma iniciativa de integração e valorização dos agentes públicos dos
+                Legislativos Municipais de Santa Catarina.
+              </p>
+              <div className="hero-cascade hero-delay-4 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <Button
+                  type="button"
+                  onClick={scrollToPrecadastro}
+                  className="min-h-14 rounded-full bg-[#17324F] px-8 text-base font-bold text-white shadow-[0_10px_24px_rgba(23,50,79,0.18)] hover:bg-[#1E4266]"
+                >
+                  Quero participar da fundação
+                  <ArrowRight aria-hidden="true" className="ml-2 size-5" />
+                </Button>
+                <span className="text-sm font-semibold text-[#5B7186]">
+                  Pré-cadastro voluntário e simplificado — leva menos de um minuto.
+                </span>
+              </div>
+            </div>
+
+            <div className="hero-cascade hero-delay-4 mx-auto w-full max-w-[19rem] motion-safe:sm:max-w-[21rem] lg:max-w-none">
+              <EloSymbol className="h-auto w-full" />
+              <p className="mt-3 text-center text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[#5B7186] sm:text-xs">
+                Conexão · Cooperação · Pertencimento
+              </p>
             </div>
           </div>
         </div>
